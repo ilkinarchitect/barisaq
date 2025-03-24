@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gəl barışaq ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+        body {
+            font-family: 'Pacifico', cursive;
+            text-align: center;
+            background: linear-gradient(45deg, #ff758c, #ff7eb3, #ffdf9e);
+            background-size: 400% 400%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            animation: gradientAnimation 8s infinite alternate ease-in-out;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        h1 {
+            color: white;
+            font-size: 2em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .container {
+            position: relative;
+            width: 100%;
+            max-width: 400px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            font-size: 20px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+        }
+
+        .accept {
+            background-color: #ff4b5c;
+            color: white;
+            animation: pulse 1s infinite alternate;
+        }
+
+        .accept:hover {
+            background-color: #ff1e40;
+        }
+
+        .reject {
+            background-color: #343a40;
+            color: white;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        /* Ürək effekti */
+        .heart {
+            position: absolute;
+            color: rgba(255, 0, 0, 0.8);
+            font-size: 20px;
+            animation: floatUp 4s infinite ease-in-out;
+            opacity: 0;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-200px);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>💖 Bilirəm məndən küsmüsən, ama gəl barışaq! 💖</h1>
+    
+    <div class="container">
+        <button class="btn accept" onclick="reconcile()">Barışaq 😊</button>
+        <button class="btn reject" id="rejectBtn">Barışmayaq 😢</button>
+    </div>
+
+    <script>
+        function reconcile() {
+            window.open("https://www.youtube.com/watch?v=0Try_KIXdRs", "_blank");
+        }
+
+        function moveButton() {
+            let btn = document.getElementById("rejectBtn");
+
+            let maxX = window.innerWidth - btn.clientWidth - 50;
+            let maxY = window.innerHeight - btn.clientHeight - 100;
+
+            let x = Math.random() * maxX;
+            let y = Math.random() * maxY;
+            
+            btn.style.left = `${x}px`;
+            btn.style.top = `${y}px`;
+        }
+
+        document.getElementById("rejectBtn").addEventListener("mouseover", moveButton);
+        document.getElementById("rejectBtn").addEventListener("touchstart", moveButton);
+
+        function createHeart() {
+            let heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            document.body.appendChild(heart);
+
+            let startX = Math.random() * window.innerWidth;
+            let startY = window.innerHeight;
+
+            heart.style.left = `${startX}px`;
+            heart.style.top = `${startY}px`;
+
+            setTimeout(() => {
+                heart.remove();
+            }, 4000);
+        }
+
+        setInterval(createHeart, 800);
+    </script>
+
+</body>
+</html>
